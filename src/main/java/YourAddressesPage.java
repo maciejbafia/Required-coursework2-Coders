@@ -26,7 +26,6 @@ public class YourAddressesPage {
         return usersInformation.getText();
     }
 
-    ////potwierdzi address (możesz go dodać wcześniej ręcznie),
     public String getAliasInformation() {
         return aliasInformation.getText();
     }
@@ -35,14 +34,6 @@ public class YourAddressesPage {
         continueBtn.click();
     }
 
-
-
-    public boolean check(String alias, String name, String address, String city, String postalCode, String country, String phoneNumber) {
-        String[] providedInformation = {alias, name, address, city, postalCode, country, phoneNumber};
-        String[] pageInformation = {getAliasInformation()};
-        return Arrays.equals(providedInformation, pageInformation);
-
-    }
 
 }
 

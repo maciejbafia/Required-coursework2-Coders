@@ -2,6 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -34,14 +35,22 @@ public class OrderTest {
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
+
         homePage.clickSignInBtn(); //zaloguje się na tego samego użytkownika z zadania 1,
         logInPage.loginToAccount("takpachniestozlotych@mail.pl","testtest");
         homePage.findItem("Hummingbird Printed Sweater");
-        searchResultPage.checkDiscountAndContinue("20%");//wybierze do zakupu Hummingbird Printed Sweater (opcja dodatkowa: sprawdzi czy rabat na niego wynosi 20%),
+        Assert.assertTrue(searchResultPage.isDiscountDisplayed());
+        Assert.assertEquals(searchResultPage.getDiscountBtn(),"-20%");
+        searchResultPage.clickSweater();
         productPage.selectSizeQuantityAndCheckout("s",5);//wybierze rozmiar M (opcja dodatkowa: zrób tak żeby można było sparametryzować rozmiar i wybrać S,M,L,XL),//wybierze 5 sztuk według parametru podanego w teście (opcja dodatkowa: zrób tak żeby można było sparametryzować liczbę sztuk),//dodaj produkt do koszyka,//przejdzie do opcji - checkout,
         shoppingCartPage.proceedToCheckout();
         Assert.assertEquals(yourAddressesPage.getAliasInformation(),"Dominik");
         Assert.assertEquals(yourAddressesPage.getUsersInformation(),"Domino Jachas\n" + "Dywizjonu 303\n" + "Krakow\n" + "90210\n" + "United Kingdom\n" + "7777");
+    }
+
+    @AfterTest()
+    public void tearDown(){
+        driver.quit();
     }
 }
 

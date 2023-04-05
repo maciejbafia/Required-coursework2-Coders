@@ -13,21 +13,18 @@ public class SearchResultPage {
     WebElement hummingbirdPrintedSweater;
 
     //(opcja dodatkowa: sprawdzi czy rabat na niego wynosi 20%)
-    public boolean isDiscountDisplayed(String value){
-        boolean isDisplayed = false;
-        if(discountBtn.isDisplayed() && discountBtn.getText().contains(value)){
-            isDisplayed = true;
-        }
-        return isDisplayed;
+    public boolean isDiscountDisplayed(){
+        return discountBtn.isDisplayed();
+    }
+    public String getDiscountBtn(){
+       return discountBtn.getText();
+
     }
     public void clickSweater(){
         hummingbirdPrintedSweater.click();
     }
 
-    public void checkDiscountAndContinue(String value){
-        isDiscountDisplayed(value);
-        clickSweater();
-    }
+
 
 }
 
