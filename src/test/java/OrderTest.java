@@ -56,7 +56,7 @@ public class OrderTest {
 
 
 //będzie logować się na tego stworzonego użytkownika,
-//wejdzie klikając w kafelek Addresses po zalogowaniu (adres, na którym powinniśmy się znaleźć to: https://mystore-testlab.coderslab.pl/index.php?controller=addresses ),
+//wejdzie klikając w kafelek Addresses po zalogowaniu
 //kliknie w + Create new address,
 //wypełni formularz New address - dane powinny być pobierane z tabeli Examples w Gherkinie (alias, address, city, zip/postal code, country, phone),
 //sprawdzi czy dane w dodanym adresie są poprawne.
