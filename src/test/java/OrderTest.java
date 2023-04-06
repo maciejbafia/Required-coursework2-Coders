@@ -36,13 +36,13 @@ public class OrderTest {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
 
-        homePage.clickSignInBtn(); //zaloguje się na tego samego użytkownika z zadania 1,
+        homePage.clickSignInBtn(); 
         logInPage.loginToAccount("takpachniestozlotych@mail.pl","testtest");
         homePage.findItem("Hummingbird Printed Sweater");
         Assert.assertTrue(searchResultPage.isDiscountDisplayed());
         Assert.assertEquals(searchResultPage.getDiscountBtn(),"-20%");
         searchResultPage.clickSweater();
-        productPage.selectSizeQuantityAndCheckout("s",5);//wybierze rozmiar M (opcja dodatkowa: zrób tak żeby można było sparametryzować rozmiar i wybrać S,M,L,XL),//wybierze 5 sztuk według parametru podanego w teście (opcja dodatkowa: zrób tak żeby można było sparametryzować liczbę sztuk),//dodaj produkt do koszyka,//przejdzie do opcji - checkout,
+        productPage.selectSizeQuantityAndCheckout("s",5);
         shoppingCartPage.proceedToCheckout();
         Assert.assertEquals(yourAddressesPage.getAliasInformation(),"Dominik");
         Assert.assertEquals(yourAddressesPage.getUsersInformation(),"Domino Jachas\n" + "Dywizjonu 303\n" + "Krakow\n" + "90210\n" + "United Kingdom\n" + "7777");
@@ -55,11 +55,10 @@ public class OrderTest {
 }
 
 
-
-
-
-//potwierdzi address (możesz go dodać wcześniej ręcznie),
-//wybierze metodę odbioru - PrestaShop "pick up in store",
-//wybierze opcję płatności - Pay by Check,
-//kliknie na "order with an obligation to pay",
-//zrobi screenshot z potwierdzeniem zamówienia i kwotą.
+//będzie logować się na tego stworzonego użytkownika,
+//wejdzie klikając w kafelek Addresses po zalogowaniu (adres, na którym powinniśmy się znaleźć to: https://mystore-testlab.coderslab.pl/index.php?controller=addresses ),
+//kliknie w + Create new address,
+//wypełni formularz New address - dane powinny być pobierane z tabeli Examples w Gherkinie (alias, address, city, zip/postal code, country, phone),
+//sprawdzi czy dane w dodanym adresie są poprawne.
+//usunie powyższy adres klikając w "delete",
+//sprawdzi czy adres został usunięty.
